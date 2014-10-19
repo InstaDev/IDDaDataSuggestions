@@ -20,7 +20,7 @@ it, simply add the following line to your Podfile:
 
 ## Author
 
-sotskiy, sotskiy@gmail.com
+Nikolay Sotskiy, sotskiy@gmail.com
 
 ## License
 
