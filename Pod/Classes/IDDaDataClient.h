@@ -6,8 +6,9 @@
 //  Copyright (c) 2014 InstaDev. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "AFNetworking.h"
+@import Foundation;
+#import <AFNetworking/AFNetworking.h>
+
 
 @interface IDDaDataClient : NSObject
 {
