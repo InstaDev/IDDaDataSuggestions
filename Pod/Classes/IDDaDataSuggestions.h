@@ -37,12 +37,14 @@ enum daDataPartyType
 - (void) getAddressSuggestionsForString: (NSString *) searchString
                            restrictions: (NSArray *) restrictions
                 hideRestrictionInResult: (BOOL) restrict_value
+                                  count: (NSUInteger)count
                                 success: (void (^)(NSArray * suggestions)) successBlock
                                 failure: (void (^)(NSError* error)) failureBlock;
 
 - (void) getAddressSuggestionsForString: (NSString *) searchString
                            restrictions: (NSArray *) restrictions
                 hideRestrictionInResult: (BOOL) restrict_value
+                                  count: (NSUInteger)count
                                   owner: (id) owner
                                 success: (void (^)(NSArray * suggestions)) successBlock
                                 failure: (void (^)(NSError* error)) failureBlock;

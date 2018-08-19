@@ -54,21 +54,23 @@
                          success: (void (^)(NSArray * suggestions)) successBlock
                          failure: (void (^)(NSError* error)) failureBlock
 {
-    [self getAddressSuggestionsForString:searchString restrictions:nil hideRestrictionInResult:NO owner:nil success:successBlock failure:failureBlock];
+    [self getAddressSuggestionsForString:searchString restrictions:nil hideRestrictionInResult:NO count:0 owner:nil success:successBlock failure:failureBlock];
 }
 
 - (void) getAddressSuggestionsForString: (NSString *) searchString
                     restrictions: (NSArray *) restrictions
          hideRestrictionInResult: (BOOL) restrict_value
+                           count: (NSUInteger)count
                          success: (void (^)(NSArray * suggestions)) successBlock
                          failure: (void (^)(NSError* error)) failureBlock
 {
-    [self getAddressSuggestionsForString:searchString restrictions:restrictions hideRestrictionInResult:restrict_value owner:nil success:successBlock failure:failureBlock];
+    [self getAddressSuggestionsForString:searchString restrictions:restrictions hideRestrictionInResult:restrict_value count:count owner:nil success:successBlock failure:failureBlock];
 }
 
 - (void) getAddressSuggestionsForString: (NSString *) searchString
                     restrictions: (NSArray *) restrictions
          hideRestrictionInResult: (BOOL) restrict_value
+                           count: (NSUInteger)count
                            owner: (id) owner
                          success: (void (^)(NSArray * suggestions)) successBlock
                          failure: (void (^)(NSError* error)) failureBlock
@@ -78,6 +80,10 @@
     if (restrictions) {
         [params setObject:restrictions forKey:@"locations"];
         [params setObject:restrict_value ? @"true" : @"false" forKey:@"restrict_value"];
+    }
+    
+    if (count) {
+        [params setObject:@(count) forKey:@"count"];
     }
     
     [[IDDaDataSuggestions sharedInstance] makeSuggestionRequestType:daDataSuggestionTypeAddress params:params success:^(AFHTTPRequestOperation *operation, id responseObject, NSArray *suggestions) {
